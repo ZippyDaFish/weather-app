@@ -1,1 +1,1 @@
-!async function(){const a=await fetch("http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=1bc93ee0ee0d4cdd8fd91c4abca090f2"),o=await a.json();console.log(o),console.log(o.main)}();
+!async function(){const a=await fetch("http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&APPID=1bc93ee0ee0d4cdd8fd91c4abca090f2"),e=await a.json();console.log(e)}();
