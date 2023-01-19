@@ -1,1 +1,1 @@
-!async function(){const a=await fetch("http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&APPID=1bc93ee0ee0d4cdd8fd91c4abca090f2"),e=await a.json();console.log(e)}();
+!async function(e,a){const i=await fetch("http://api.openweathermap.org/data/2.5/weather?q=Lansing&units=metric&APPID=1bc93ee0ee0d4cdd8fd91c4abca090f2"),n=await i.json();console.log(n),function(e){e.main.feels_like,e.main.temp,e.main.humidity,e.wind.speed,e.weather[0].description}(n)}();
