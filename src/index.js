@@ -2,7 +2,6 @@ async function getWeatherData(city, unit){
     const response = await fetch('http://api.openweathermap.org/data/2.5/weather?q='+city+'&units='+unit+'&APPID=1bc93ee0ee0d4cdd8fd91c4abca090f2');
     const weatherData = await response.json();
     weatherToday = assignWeatherData(weatherData);
-    console.log(weatherData);
     console.log(weatherToday);
 }
 function assignWeatherData(weatherData){
