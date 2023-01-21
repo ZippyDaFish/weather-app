@@ -3,6 +3,7 @@ async function getWeatherData(city, unit){
     const weatherData = await response.json();
     weatherToday = assignWeatherData(weatherData);
     console.log(weatherToday);
+    displayWeatherToday(weatherToday);
 }
 function assignWeatherData(weatherData){
     weatherToday = {};
@@ -27,6 +28,7 @@ function assignForecastData(forecastDataList){
         dataInDays.push(day);
     }
     console.log(dataInDays);
+    displayForecast(dataInDays);
 }
 function extractUsefulForecastData(day){
     dayData = {};
@@ -42,9 +44,30 @@ function fetchIconImage(iconCode){
     return icon;
 }
 
-function getData(){
-    getWeatherData('Lansing', 'metric');
-    getForecastData('Lansing', 'metric');
+function displayWeatherToday(weather){
+    document.getElementById('feels-like').innerText = weather.feelsLike;
+    document.getElementById('temp').innerText = weather.temp;
+    document.getElementById('humidity').innerText = weather.humidity;
+    document.getElementById('wind').innerText = weather.wind;
+    document.getElementById('icon').src = weather.icon;
+    document.getElementById('description').innerText = weather.desc;
+}
+function displayForecast(forecast){
+    console.log("Displaying Forecast")
 }
 
-document.getElementById('location-submit').addEventListener('click', function(){ getData(); });
+function getData(location, unit){
+    getWeatherData(location, unit);
+    getForecastData(location, unit);
+}
+
+function validateLocationInput(){
+    let locationInput = document.getElementById('location-input');
+    const location = locationInput.value;
+    locationInput.value = "";
+    getData(location, 'metric');
+}
+
+document.getElementById('location-submit').addEventListener('click', function(){ validateLocationInput(); });
+
+getData('London', 'metric');
