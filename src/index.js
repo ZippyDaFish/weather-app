@@ -42,5 +42,9 @@ function fetchIconImage(iconCode){
     return icon;
 }
 
-getWeatherData('Lansing', 'metric');
-getForecastData('Lansing', 'metric');
+function getData(){
+    getWeatherData('Lansing', 'metric');
+    getForecastData('Lansing', 'metric');
+}
+
+document.getElementById('location-submit').addEventListener('click', function(){ getData(); });
