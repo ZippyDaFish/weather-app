@@ -8,17 +8,25 @@
     <title>Weather App | Andrew Riker</title>
 </head>
 <body>
-    <div id="weather-today">
-        <p id="feels-like"></p>
-        <p id="temp"></p>
-        <p id="humidity"></p>
-        <p id="wind"></p>
-        <img id="icon">
-        <p id="description"></p>
-    </div>
     <div>
-        <input id="location-input" type="text">
-        <input id="location-submit" type="button">
+        <div id="weather-today">
+            <p id="feels-like"></p>
+            <p id="temp"></p>
+            <p id="humidity"></p>
+            <p id="wind"></p>
+            <p id="description"></p>
+            <img id="icon">
+            <p id="location-display"></p>
+        </div>
+        <div>
+            <input id="location-input" type="text">
+            <input id="location-submit" type="button">
+        </div>
+    </div>
+    <div id="forecast">
+        <div class="forecast-card">
+
+        </div>
     </div>
     <script src="main.js"></script>
 </body>

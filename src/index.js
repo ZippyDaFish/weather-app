@@ -1,9 +1,8 @@
-async function getWeatherData(city, unit){
-    const response = await fetch('http://api.openweathermap.org/data/2.5/weather?q='+city+'&units='+unit+'&APPID=1bc93ee0ee0d4cdd8fd91c4abca090f2');
+async function getWeatherData(location, unit){
+    const response = await fetch('http://api.openweathermap.org/data/2.5/weather?q='+location+'&units='+unit+'&APPID=1bc93ee0ee0d4cdd8fd91c4abca090f2');
     const weatherData = await response.json();
     weatherToday = assignWeatherData(weatherData);
-    console.log(weatherToday);
-    displayWeatherToday(weatherToday);
+    displayWeatherToday(weatherToday, location);
 }
 function assignWeatherData(weatherData){
     weatherToday = {};
@@ -16,10 +15,12 @@ function assignWeatherData(weatherData){
     return weatherToday;
 }
 
-async function getForecastData(city, unit){
-    const response = await fetch('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&units='+unit+'&APPID=1bc93ee0ee0d4cdd8fd91c4abca090f2');
+async function getForecastData(location, unit){
+    const response = await fetch('http://api.openweathermap.org/data/2.5/forecast?q='+location+'&units='+unit+'&APPID=1bc93ee0ee0d4cdd8fd91c4abca090f2');
     const forecastData = await response.json();
-    assignForecastData(forecastData.list);
+    forecast = assignForecastData(forecastData.list);
+    console.log(forecast)
+    displayForecast(forecast);
 }
 function assignForecastData(forecastDataList){
     let dataInDays = [];
@@ -27,8 +28,7 @@ function assignForecastData(forecastDataList){
         day = extractUsefulForecastData(forecastDataList[i]);
         dataInDays.push(day);
     }
-    console.log(dataInDays);
-    displayForecast(dataInDays);
+    return dataInDays;
 }
 function extractUsefulForecastData(day){
     dayData = {};
@@ -44,16 +44,38 @@ function fetchIconImage(iconCode){
     return icon;
 }
 
-function displayWeatherToday(weather){
+function displayWeatherToday(weather, location){
     document.getElementById('feels-like').innerText = weather.feelsLike;
     document.getElementById('temp').innerText = weather.temp;
     document.getElementById('humidity').innerText = weather.humidity;
     document.getElementById('wind').innerText = weather.wind;
-    document.getElementById('icon').src = weather.icon;
     document.getElementById('description').innerText = weather.desc;
+    document.getElementById('icon').src = weather.icon;
+    document.getElementById('location-display').innerText = location;
 }
 function displayForecast(forecast){
-    console.log("Displaying Forecast")
+    const forecastDiv = document.getElementById('forecast');
+    forecastDiv.innerHTML = "";
+    for(i = 0; i < forecast.length; i++){
+        // create forecast card
+        const forecastCard = document.createElement('div');
+        forecastCard.classList.add('forecast-card');
+        forecastDiv.appendChild(forecastCard);
+        
+        const dateDisplay = document.createElement('p');
+        dateDisplay.innerText = forecast[i].date;
+        const tempDisplay = document.createElement('p');
+        tempDisplay.innerText = forecast[i].temp;
+        const popDisplay = document.createElement('p');
+        popDisplay.innerText = forecast[i].pop;
+        const iconDisplay =document.createElement('img');
+        iconDisplay.src = forecast[i].icon;
+
+        forecastCard.appendChild(dateDisplay);
+        forecastCard.appendChild(tempDisplay);
+        forecastCard.appendChild(popDisplay);
+        forecastCard.appendChild(iconDisplay);
+    }
 }
 
 function getData(location, unit){
