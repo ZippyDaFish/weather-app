@@ -10,7 +10,7 @@ function assignWeatherData(weatherData){
     weatherToday["temp"] = weatherData.main.temp;
     weatherToday["humidity"] = weatherData.main.humidity;
     weatherToday["wind"] = weatherData.wind.speed;
-    weatherToday["icon"] = weatherData.weather[0].icon;
+    weatherToday["icon"] = fetchIconImage(weatherData.weather[0].icon);
     weatherToday["desc"] = weatherData.weather[0].description;
     return weatherToday;
 }
@@ -32,9 +32,14 @@ function extractUsefulForecastData(day){
     dayData = {};
     dayData["date"] = day.dt_txt;
     dayData["pop"] = day.pop * 100;
-    dayData["icon"] = day.weather[0].icon;
+    dayData["icon"] = fetchIconImage(day.weather[0].icon);
     dayData["temp"] = day.main.temp;
     return dayData;
+}
+
+function fetchIconImage(iconCode){
+    icon = 'http://openweathermap.org/img/wn/'+iconCode+'@2x.png';
+    return icon;
 }
 
 getWeatherData('Lansing', 'metric');
