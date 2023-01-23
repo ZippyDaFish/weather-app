@@ -57,9 +57,8 @@ function displayForecast(forecast){
     const forecastDiv = document.getElementById('forecast');
     forecastDiv.innerHTML = "";
     for(i = 0; i < forecast.length; i++){
-        // create forecast card
         const forecastCard = document.createElement('div');
-        forecastCard.classList.add('forecast-card');
+        forecastCard.classList.add('forecast-card', 'flex-column');
         forecastDiv.appendChild(forecastCard);
         
         const dateDisplay = document.createElement('p');
