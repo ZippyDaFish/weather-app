@@ -9,17 +9,21 @@
 </head>
 <body>
     <div class="content flex-column">
-        <div id="weather-today" class="text-mid">
-            <p id="location-display"></p>
-            <p id="feels-like"></p>
-            <p id="temp"></p>
-            <p id="humidity"></p>
-            <p id="wind"></p>
-            <p id="description"></p>
-            <img id="icon">
+        <div id="weather-today" class="text-mid flex-row">
             <div>
-                <input id="location-input" type="text">
-                <input id="location-submit" type="button">
+                <p id="location-display"></p>
+                <p id="feels-like"></p>
+                <p id="description"></p>
+                <img id="icon">
+                <div>
+                    <input id="location-input" type="text">
+                    <input id="location-submit" type="button">
+                </div>
+            </div>
+            <div>
+                <p id="temp"></p>
+                <p id="humidity"></p>
+                <p id="wind"></p>
             </div>
         </div>
         <div id="forecast" class="forecast flex-row text-mid">
