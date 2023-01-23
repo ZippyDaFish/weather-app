@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.content {
+    width: 100vw;
+    height: 100vh;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
