@@ -11,7 +11,7 @@ function assignWeatherData(weatherData){
     weatherToday["humidity"] = weatherData.main.humidity;
     weatherToday["wind"] = weatherData.wind.speed;
     weatherToday["icon"] = fetchIconImage(weatherData.weather[0].icon);
-    weatherToday["desc"] = weatherData.weather[0].description;
+    weatherToday["desc"] = capitalizeWords(weatherData.weather[0].description);
     return weatherToday;
 }
 
@@ -49,6 +49,14 @@ function sliceDate(date){
     finalDate = slicedDate.split(' ');
     return finalDate[0];
 }
+function capitalizeWords(sentence){
+    let words = sentence.split(" ");
+    for(let i = 0; i < words.length; i++){
+        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+    }
+    finalSentence = words.join(" ");
+    return finalSentence;
+}
 
 function displayWeatherToday(weather, location){
     document.getElementById('feels-like').innerText = "Feels Like " + weather.feelsLike.toString() + "C";
@@ -69,17 +77,17 @@ function displayForecast(forecast){
         
         const dateDisplay = document.createElement('p');
         dateDisplay.innerText = forecast[i].date;
-        const tempDisplay = document.createElement('p');
-        tempDisplay.innerText = forecast[i].temp;
         const popDisplay = document.createElement('p');
         popDisplay.innerText = forecast[i].pop;
         const iconDisplay =document.createElement('img');
         iconDisplay.src = forecast[i].icon;
+        const tempDisplay = document.createElement('p');
+        tempDisplay.innerText = forecast[i].temp;
 
         forecastCard.appendChild(dateDisplay);
-        forecastCard.appendChild(tempDisplay);
         forecastCard.appendChild(popDisplay);
         forecastCard.appendChild(iconDisplay);
+        forecastCard.appendChild(tempDisplay);
     }
 }
 
