@@ -7,6 +7,13 @@
 .content {
     width: 100vw;
     height: 100vh;
+    justify-content: space-between;
+    background-color: black;
+}
+
+.text-mid {
+    color: white;
+    font-size: 32px;
 }
 
 .flex-column {
@@ -16,4 +23,10 @@
 .flex-row {
     display: flex;
     flex-direction: row;
+}
+
+.forecast-card {
+    background-color: gray;
+    border-radius: 10px;
+    align-items: center;
 }
