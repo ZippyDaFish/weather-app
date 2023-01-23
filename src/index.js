@@ -32,10 +32,10 @@ function assignForecastData(forecastDataList){
 }
 function extractUsefulForecastData(day){
     dayData = {};
-    dayData["date"] = day.dt_txt;
-    dayData["pop"] = day.pop * 100;
+    dayData["date"] = sliceDate(day.dt_txt);
+    dayData["pop"] = (day.pop * 100).toString() + "%";
     dayData["icon"] = fetchIconImage(day.weather[0].icon);
-    dayData["temp"] = day.main.temp;
+    dayData["temp"] = day.main.temp.toString() + "C";
     return dayData;
 }
 
@@ -43,10 +43,16 @@ function fetchIconImage(iconCode){
     icon = 'http://openweathermap.org/img/wn/'+iconCode+'@2x.png';
     return icon;
 }
+function sliceDate(date){
+    date = date.toString();
+    slicedDate = date.slice(6);
+    finalDate = slicedDate.split(' ');
+    return finalDate[0];
+}
 
 function displayWeatherToday(weather, location){
-    document.getElementById('feels-like').innerText = weather.feelsLike;
-    document.getElementById('temp').innerText = weather.temp;
+    document.getElementById('feels-like').innerText = weather.feelsLike.toString() + "C";
+    document.getElementById('temp').innerText = weather.temp.toString() + "C";
     document.getElementById('humidity').innerText = weather.humidity;
     document.getElementById('wind').innerText = weather.wind;
     document.getElementById('description').innerText = weather.desc;
