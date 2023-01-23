@@ -9,6 +9,7 @@
     height: 100vh;
     justify-content: space-between;
     background-color: black;
+    padding: 3vh;
 }
 
 .text-mid {
@@ -29,4 +30,5 @@
     background-color: gray;
     border-radius: 10px;
     align-items: center;
+    margin: 2vh;
 }
