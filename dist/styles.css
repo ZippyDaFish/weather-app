@@ -12,9 +12,13 @@
     padding: 3vh;
 }
 
+#weather-today {
+    justify-content: space-between;
+}
+
 .text-mid {
     color: white;
-    font-size: 32px;
+    font-size: 48px;
 }
 
 .flex-column {

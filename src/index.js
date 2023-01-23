@@ -51,10 +51,10 @@ function sliceDate(date){
 }
 
 function displayWeatherToday(weather, location){
-    document.getElementById('feels-like').innerText = weather.feelsLike.toString() + "C";
-    document.getElementById('temp').innerText = weather.temp.toString() + "C";
-    document.getElementById('humidity').innerText = weather.humidity;
-    document.getElementById('wind').innerText = weather.wind;
+    document.getElementById('feels-like').innerText = "Feels Like " + weather.feelsLike.toString() + "C";
+    document.getElementById('temp').innerText = "Temp " + weather.temp.toString() + "C";
+    document.getElementById('humidity').innerText = "Humidity " + weather.humidity;
+    document.getElementById('wind').innerText = "Wind " + weather.wind;
     document.getElementById('description').innerText = weather.desc;
     document.getElementById('icon').src = weather.icon;
     document.getElementById('location-display').innerText = location;
