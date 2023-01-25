@@ -33,7 +33,7 @@ function assignForecastData(forecastDataList){
 function extractUsefulForecastData(day){
     dayData = {};
     dayData["date"] = sliceDate(day.dt_txt);
-    dayData["pop"] = (day.pop * 100).toString() + "%";
+    dayData["pop"] = Math.round(day.pop * 100).toString() + "%";
     dayData["icon"] = fetchIconImage(day.weather[0].icon);
     dayData["temp"] = day.main.temp.toString() + "C";
     return dayData;
