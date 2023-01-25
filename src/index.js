@@ -1,5 +1,5 @@
 async function getWeatherData(location, unit){
-    const response = await fetch('http://api.openweathermap.org/data/2.5/weather?q='+location+'&units='+unit+'&APPID=1bc93ee0ee0d4cdd8fd91c4abca090f2', {mode: 'cors'});
+    const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q='+location+'&units='+unit+'&APPID=1bc93ee0ee0d4cdd8fd91c4abca090f2', {mode: 'cors'});
     const weatherData = await response.json();
     weatherToday = assignWeatherData(weatherData);
     displayWeatherToday(weatherToday, location);
@@ -16,7 +16,7 @@ function assignWeatherData(weatherData){
 }
 
 async function getForecastData(location, unit){
-    const response = await fetch('http://api.openweathermap.org/data/2.5/forecast?q='+location+'&units='+unit+'&APPID=1bc93ee0ee0d4cdd8fd91c4abca090f2', {mode: 'cors'});
+    const response = await fetch('https://api.openweathermap.org/data/2.5/forecast?q='+location+'&units='+unit+'&APPID=1bc93ee0ee0d4cdd8fd91c4abca090f2', {mode: 'cors'});
     const forecastData = await response.json();
     forecast = assignForecastData(forecastData.list);
     console.log(forecast)
